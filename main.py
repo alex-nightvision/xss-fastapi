@@ -53,3 +53,8 @@ async def protected_page(request: Request, username: str = Depends(get_username)
 async def static_file(file_path: str):
     # Serve static files, update the base directory path according to your file structure
     return FileResponse(f"static/{file_path}")
+
+@app.get("/broken")
+def broken_page(request: Request):
+    # test file errors
+    return 1/0
